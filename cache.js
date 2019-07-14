@@ -12,16 +12,22 @@ var cache = {
 
 module.exports = {
   checkCache: function(callback){
-    
+        for(let _domain in cache.domains){   
+      let domain = cache.domains[_domain];
+          
+          console.log(domain.last_checked - Date.now())
+      // cache.domains[_domain].last_checked =  Date.now();
+      // console.log(domain)
+    }
   },
   startCache: function(){
     for(let _domain in cache.domains){
       let domain = cache.domains[_domain];
-      cache.domains[_domain].last_checked = new Date();
+      cache.domains[_domain].last_checked =  Date.now();
       console.log(domain)
     }
   },
-  getCache: function(){
-    
+  getCache: function(callback){
+    return callback(cache)
   }
 }

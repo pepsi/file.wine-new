@@ -12,10 +12,14 @@ app.get('/status/:domain', (req,res) => {
   const domain = req.params.domain || []
   if(domain == []){
     res.send(404, "Domain not found") //shouldnt be possible to hit this
+  }else{
+    res.send(cache.check)
   }
 })
 app.get('/api/v1/status', (req,res) => {
-  res.send(cache.cache)
+  cache.checkCache((c) => {
+    res.send(c)
+  })
 })
 
 const listener = app.listen(process.env.PORT, function() {
