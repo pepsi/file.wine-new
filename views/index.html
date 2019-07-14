@@ -1,58 +1,50 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
-<!-- pug: https://pugjs.org/ -->
-<!-- haml: http://haml.info/ -->
-<!-- hbs(handlebars): http://handlebarsjs.com/ -->
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Welcome to Glitch!</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+   <head>
+	<title>file.wine</title>
+	<link rel="shortcut icon" type="image/png" href="https://file.wine/assets/favicon.png"/>
+	<meta content="file.wine" property="og:title">
+	<meta content="file.wine" property="og:site_name">
+	<meta content="Upload and share files for free. No account needed!" property="og:description">
+	<meta name="theme-color" content="#7289DA">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1358865196814452",
+          enable_page_level_ads: true
+     });
+</script>
+   </head>
+   <style>
+      @import 'https://file.wine/assets/style.css';
+      @import 'https://fonts.googleapis.com/css?family=Montserrat';
+      @import 'https://use.fontawesome.com/releases/v5.8.1/css/solid.css';
+      @import 'https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css';
 
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    
-    <!-- import the webpage's client-side javascript file -->
-    <script src="/client.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <h1>
-        A Dream of the Future
-      </h1>
-    </header>
+</style>
+   <div class='site' onload="load()">
 
-    <main>
-      <p class="bold">Oh hi,</p>
+      <h id=domain-index>
+        <i class="fas fa-wine-glass"></i>    file.wine <i class="fas fa-wine-glass"></i>
+        <h1>Free File Uploader</h1>
+      </h>
       
-      <p>Tell me your hopes and dreams:</p>
-      
-      <form>
-        <input name="dream" type="text" maxlength="100" placeholder="Dreams!" aria-labelledby="submit-dream">
-        <button type="submit" id="submit-dream">Submit Dream</button>
-      </form>
-      
-      <section class="dreams">
-        <ul id="dreams"></ul>
-      </section>
-    </main>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<div class="upload-btn-wrapper">
+		   <form method="POST" action="" enctype="multipart/form-data">
+				<button class="btn">Upload a file</button>
+				<input type="file" name="file" onchange="form.submit()">
+				<input type="hidden" name="_token" value="aAHyJeZVojEVGnOBTBYgxlmCdTCKiSDYkSThPUUFwXcCIbRZDf">
+		   </form>
+		</div>
 
-    <footer>
-      Made with <a href="https://glitch.com">Glitch</a>!
-    </footer>
-
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
-
-  </body>
+<p id="footer">
+    <a href='/sharex.php'>ShareX</a> &#8226;
+    <a href='/domains.php'>Domain List</a> &#8226;
+    <a href='/faq.php'>FAQ</a> &#8226;
+    <a href='//discordapp.com/invite/2TTTGkG'> Discord</a> &#8226;
+	<a href='https://dankmail.org'> Dank Mail</a> &#8226;
+    <a href='https://file.wine/report.php'>REPORT ABUSE</a>
+</p>   </div>
 </html>
