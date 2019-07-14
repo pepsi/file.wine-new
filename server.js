@@ -13,7 +13,15 @@ app.get('/status/:domain', (req,res) => {
   if(domain == []){
     res.send(404, "Domain not found") //shouldnt be possible to hit this
   }else{
-    res.send(cache.check)
+    cache.getCache((c) => {
+      for(domain of config.domains){
+        if(domain.url == req.host){
+          res.send('clap')
+        }
+      }
+      res.send(c)
+    })
+    // res.send(cache.getCache())
   }
 })
 app.get('/api/v1/status', (req,res) => {

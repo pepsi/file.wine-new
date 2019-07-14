@@ -1,3 +1,4 @@
+var config = require('./config.js')
 var cache = {
     domains: [{
         "url": "file.wine",
@@ -6,6 +7,9 @@ var cache = {
 }
 
 var setCache = function() {
+  if(cache.domains == []){
+    cache.domains =  config.domains
+  }
     for (let _domain in cache.domains) {
         let domain = cache.domains[_domain];
         cache.domains[_domain].last_checked = Date.now();

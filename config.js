@@ -1,3 +1,3 @@
 module.export = {
-  test: "200 OK"
+  domains: ["file.wine","flamingo.cf","ss.nebulium.cf"]
 }
