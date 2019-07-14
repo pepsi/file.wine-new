@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-const config = require('./config.js')
-const cache = require('./cache.js')
+const config = require('./config.js');
+const cache = require('./cache.js');
+
 app.get('/', (req,res) => {
   res.sendFile(__dirname + '/public/index.html')
 })
@@ -14,7 +15,7 @@ app.get('/status/:domain', (req,res) => {
     res.send(404, "Domain not found") //shouldnt be possible to hit this
   }else{
     cache.getCache((c) => {
-      for(domain of config.domains){
+      for(domain of config.domains){ //broken
         if(domain.url == req.host){
           res.send('clap')
         }
