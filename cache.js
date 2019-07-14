@@ -1,33 +1,34 @@
 var cache = {
-  domains: [
-    {
-      "url": "file.wine",
-      "prev_response": [], //last 5 responses
-      "avg_response": 50, //
-      "last_checked": "0"
-    }
-  ]
+    domains: [{
+        "url": "file.wine",
+        "last_checked": "0"
+    }]
 }
 
-
+var setCache = function() {
+    for (let _domain in cache.domains) {
+        let domain = cache.domains[_domain];
+        cache.domains[_domain].last_checked = Date.now();
+      return cache
+    }
+}
+var checkCache = function(callback) {
+    for (let _domain in cache.domains) {
+        let domain = cache.domains[_domain];
+        if (Date.now() - domain.last_checked > 300000) {
+            return setCache()
+        }else{
+          return getCache((c) => {
+            return callback(c)
+          })
+        }
+    }
+}
+var getCache = function(callback){
+  return callback(cache);
+}
 module.exports = {
-  checkCache: function(callback){
-        for(let _domain in cache.domains){   
-      let domain = cache.domains[_domain];
-          
-          console.log(domain.last_checked - Date.now())
-      // cache.domains[_domain].last_checked =  Date.now();
-      // console.log(domain)
-    }
-  },
-  startCache: function(){
-    for(let _domain in cache.domains){
-      let domain = cache.domains[_domain];
-      cache.domains[_domain].last_checked =  Date.now();
-      console.log(domain)
-    }
-  },
-  getCache: function(callback){
-    return callback(cache)
-  }
+    checkCache: checkCache,
+    setCache: setCache,
+    getCache: getCache
 }
