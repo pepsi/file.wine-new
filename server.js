@@ -32,7 +32,7 @@ app.get('/api/v1/status', (req,res) => {
 })
 
 const listener = app.listen(process.env.PORT, function() {
-  cache.setCache()
+  cache.initCache()
   console.log('[FILE.WINE] Launched on port ' + listener.address().port);
 });
 
