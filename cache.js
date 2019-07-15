@@ -17,7 +17,7 @@ var setCache = function() {
     for (let _domain in cache.domains) {
         let domain = cache.domains[_domain];
         cache.domains[_domain].last_checked = Date.now();
-        request('https://' + cache.domains[_domain].url).on('response', function(response) {
+        request('https://' + cache.domains[_domain].url + "/ping").on('response', function(response) {
           cache.domains[_domain].working = response.statusCode === 200
         })
     }

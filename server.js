@@ -9,21 +9,8 @@ app.get('/', (req,res) => {
 app.get('/assets/styles.css', (req,res) => {
   res.sendFile(__dirname + '/public/style.css')
 })
-app.get('/status/:domain', (req,res) => {
-  const domain = req.params.domain || []
-  if(domain == []){
-    res.send(404, "Domain not found") //shouldnt be possible to hit this
-  }else{
-    cache.getCache((c) => {
-      for(domain of config.domains){ //broken
-        if(domain.url == req.host){
-          res.send('clap')
-        }
-      }
-      res.send(c)
-    })
-    // res.send(cache.getCache())
-  }
+app.get('/ping', (req,res) => {
+  res.send('~')
 })
 app.get('/api/v1/status', (req,res) => {
   cache.checkCache((c) => {
