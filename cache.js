@@ -12,25 +12,22 @@ var initCache = function() {
         })
     }
 }
-var setCache = function(callback) {
+var setCache = function() {
 
     for (let _domain in cache.domains) {
         let domain = cache.domains[_domain];
         cache.domains[_domain].last_checked = Date.now();
-        request('https://' + cache.domains[_domain].url + "/").on('response', function(response) {
+        request('https://' + cache.domains[_domain].url + "/ping").on('response', function(response) {
           cache.domains[_domain].working = response.statusCode === 200
         })
     }
-    return callback(cache)
+    return cache
 }
 var checkCache = function(callback) {
     for (let _domain in cache.domains) {
         let domain = cache.domains[_domain];
         if (Date.now() - domain.last_checked > 300000) {
-            // return callback(setCache())
-          setCache((c) => {
-            return callback(c)
-          })
+            return callback(setCache())
         } else {
             return callback(cache)
         }
