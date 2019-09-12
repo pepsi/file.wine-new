@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const config = require('./config.js');
 const cache = require('./cache.js');
-
+app.set('view engine', 'ejs')
 app.get('/', (req,res) => {
   res.sendFile(__dirname + '/public/index.html')
 })
@@ -17,7 +17,11 @@ app.get('/api/v1/status', (req,res) => {
     res.send(c)
   })
 })
-
+app.get('/domains', (req, res) => {
+  
+  
+  
+})
 const listener = app.listen(process.env.PORT, function() {
   cache.initCache()
   console.log('[FILE.WINE] Launched on port ' + listener.address().port);
