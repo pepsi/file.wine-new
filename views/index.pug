@@ -1,0 +1,32 @@
+html
+  head
+    link(rel='stylesheet', href='/static/css/styles.css')
+    script(src='/static/js/particles.min.js')
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    title Guilds
+    
+  body
+   
+        
+    h1 file.wine
+    h2 the best free file uploader
+    h3 
+      form(action='/up.php?w=true', method='post', enctype='multipart/form-data')
+          input#upload(type='file', name="sharex")
+          a#upload_link(href='') Upload your photo
+          button(type="submit") submit
+    p#hud
+      //- img#icon(src="https://cdn.discordapp.com/avatars/2") 
+      a(href='/domains ') domains <br> 
+      a(href='/login') sharex config
+    div#particles-js  
+script. 
+  $(function(){
+      $("#upload_link").on('click', function(e){
+          e.preventDefault();
+          $("#upload:hidden").trigger('click');
+      });
+  });
+include ./particles.pug
+      

@@ -3,7 +3,7 @@ var request = require('request')
 var cache = {
     domains: []
 }
-var initCache = function() {
+var initCache = function () {
     for (let domain of config.domains) {
         cache.domains.push({
             url: domain,
@@ -12,18 +12,20 @@ var initCache = function() {
         })
     }
 }
-var setCache = function() {
+var setCache = function () {
 
     for (let _domain in cache.domains) {
         let domain = cache.domains[_domain];
         cache.domains[_domain].last_checked = Date.now();
-        request('https://' + cache.domains[_domain].url + "/").on('response', function(response) {
-          cache.domains[_domain].working = response.statusCode === 200
+        request('https://' + cache.domains[_domain].url + "/").on('response', function (response) {
+            cache.domains[_domain].working = response.statusCode === 200
+        }).on('error', () => {
+            cache.domains[_domain].working = false
         })
     }
     return cache
 }
-var checkCache = function(callback) {
+var checkCache = function (callback) {
     for (let _domain in cache.domains) {
         let domain = cache.domains[_domain];
         if (Date.now() - domain.last_checked > 300000) {
@@ -33,7 +35,7 @@ var checkCache = function(callback) {
         }
     }
 }
-var getCache = function(callback) {
+var getCache = function (callback) {
     return callback(cache);
 }
 module.exports = {

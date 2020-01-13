@@ -1,0 +1,106 @@
+body {
+    background-color: black;
+    /* z-index: 2; */
+}
+
+h1,
+h2,
+h3,
+a,
+.domains {
+    color: white;
+    text-align: center !important;
+    z-index: 999989;
+
+}
+
+* {
+    font-family: pepsi light;
+}
+
+p {
+    color: white;
+
+}
+
+#hud {
+    text-align: right;
+    top: 0%;
+    position: absolute;
+    right: 5%;
+    background-color: black;
+    /* transform: translate(-0%, %); */
+}
+
+.hud a {
+    padding-top: 25%;
+    /* position: absolute; */
+    
+
+}
+h1 {
+    padding-top: 20%;
+}
+
+/* a {
+    color: lightblue;
+    position: relative;
+
+} */
+#upload_link{
+    text-decoration:none;
+}
+#upload{
+    display:none
+}
+
+#particles-js {
+    width: 100%;
+    
+    height: 100%;
+    /* background-color: #b61924; */
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    z-index: -1;
+}
+
+canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#icon {
+    width: 55px;
+    height: 55px;
+    top: -35%;
+    text-align: right;
+
+    /* right: 10%; */
+    /* position: absolute; */
+    border-radius: 50%;
+}
+
+img {
+    text-align: center;
+    border-radius: 50%;
+    width: 32px;
+    position: absolute;
+    left: 50%;
+    height: 32px;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+}
+#guildname{
+    transform: translate(-50%, -50%);
+    left: 50%;
+    text-align: center;
+    position: absolute;
+    margin-top: 30px;
+}
