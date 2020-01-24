@@ -101,35 +101,35 @@ app.post('/i/u.php', (req, res) => {
 app.post('/i/u', (req, res) => {
   return handleUpload(req, res)
 })
+
 function handleGrabImage(req, res) {
   file = __dirname + path.sep + "images" + path.sep + req.params.img
-  if(fs.existsSync(file)){
-  res.sendFile(file)
-  }else{
-    res.render('404', {
-      reason: "Image not found. Did you type the URL correctly?"
-    })
-  }
+  fs.exists(file, (exists) => {
+    if (exists) {
+      res.sendFile(file)
+    }
+  })
 }
-app.all('*',(req,res) => {
+app.all('*', (req, res) => {
   res.render('404', {
     reason: "Page not found. Did you type the URL correctly?"
   })
 })
+
 function handleUpload(req, res) {
   const id = makeid();
-  if(req.files){
-    if(req.files.sharex){
+  if (req.files) {
+    if (req.files.sharex) {
       extension = req.files.sharex.name.split('.')[1] || ''
       if (['bat', 'exe'].includes(extension)) {
-    
+
       }
-      req.files.sharex.mv(__dirname + '/images/' + id + '.' + extension)
+      req.files.sharex.mv(__dirname + path.sep + 'images' + path.sep + id + '.' + extension)
       res.send('https://' + req.hostname + '/' + id + '.' + extension)
-    }else{
+    } else {
       res.send("No file named sharex was uploaded.")
     }
-  }else{
+  } else {
     res.send("No file uploaded.")
   }
 }
