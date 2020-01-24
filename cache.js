@@ -19,7 +19,8 @@ var setCache = function () {
         cache.domains[_domain].last_checked = Date.now();
         request('https://' + cache.domains[_domain].url + "/").on('response', function (response) {
             cache.domains[_domain].working = response.statusCode === 200
-        }).on('error', () => {
+        }).on('error', (err) => {
+            console.log(err)
             cache.domains[_domain].working = false
         })
     }

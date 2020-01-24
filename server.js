@@ -85,7 +85,7 @@ app.get('/:img', (req,res) => {
   fs.readFile(file, (err, data) => {
     if(err){
       console.log(err)
-      res.send('an error has occured, potentially this file doesnt exist?')
+      res.send('an error has occured, maybe this file doesnt exist?')
     }else{
     res.send(data)
   }
@@ -93,10 +93,15 @@ app.get('/:img', (req,res) => {
 })
 
 function handleUpload(req, res) {
+
   // console.log(req.files)
   const id = makeid();
-  req.files.sharex.mv(__dirname + '/images/' + id + '.png')
-  res.send('http://ab36d7c1.ngrok.io/' + id + '.png')
+  extension = req.files.sharex.name.split('.')[1] || ''
+  if(['bat','exe'].includes(extension)){
+
+  }
+  req.files.sharex.mv(__dirname + '/images/' + id + '.' + extension)
+  res.send('https://' + req.hostname + '/' + id + '.' + extension)
 }
 const listener = app.listen(4004, function () {
   cache.initCache()
