@@ -8,31 +8,26 @@ h2,
 h3,
 h4,
 a,
-.domains,.config {
+.domains,
+.config {
     color: white;
     text-align: center !important;
     z-index: 999989;
-    
-
 }
-.config{
+.config {
     max-width: 99%;
     margin-left: auto;
-margin-right: auto;
-background-color: black;
-border-radius: 11%;
-padding: 10px;
+    margin-right: auto;
+    background-color: black;
+    border-radius: 11%;
+    padding: 10px;
 }
-
 * {
     font-family: pepsi light;
 }
-
 p {
     color: white;
-
 }
-
 #hud {
     text-align: right;
     top: 0%;
@@ -41,34 +36,23 @@ p {
     background-color: black;
     /* transform: translate(-0%, %); */
 }
-
 .hud a {
     padding-top: 25%;
-    /* position: absolute; */
-    
-
 }
+
 h1 {
     padding-top: 20%;
 }
-
-/* a {
-    color: lightblue;
-    position: relative;
-
-} */
-#upload_link{
-    text-decoration:none;
+#upload_link {
+    text-decoration: none;
 }
-#upload{
-    display:none
+#upload {
+    display: none
 }
-
 #particles-js {
     width: 100%;
-    
+
     height: 100%;
-    /* background-color: #b61924; */
     background-image: url('');
     background-size: cover;
     background-position: 50% 50%;
@@ -78,25 +62,19 @@ h1 {
     top: 0%;
     z-index: -1;
 }
-
 canvas {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
 }
-
 #icon {
     width: 55px;
     height: 55px;
     top: -35%;
     text-align: right;
-
-    /* right: 10%; */
-    /* position: absolute; */
     border-radius: 50%;
 }
-
 img {
     text-align: center;
     border-radius: 50%;
@@ -107,7 +85,7 @@ img {
     transform: translate(-50%, -50%);
     transition: 1s;
 }
-#guildname{
+#guildname {
     transform: translate(-50%, -50%);
     left: 50%;
     text-align: center;

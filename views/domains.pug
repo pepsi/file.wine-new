@@ -7,10 +7,9 @@ html
     .domains
       each domain in cache.domains
         if domain.working
-          a#domain(href='https://' + domain.url) <span style="font-size:15px;  background: green;margin: 0 auto;">Online</span> #{domain.url}<br>
+          a#domain(href='https://'+domain.url) <span style="font-size:15px;background:green;margin:0 auto;">Online</span> #{domain.url}<br>
         else
-          a#domain(href='https://' +  domain.url) <span style="font-size:15px;  background: red;margin: 0 auto;">Offline</span> #{domain.url}<br>
-    
+          a#domain(href='https://'+ domain.url) <span style="font-size:15px;background:red;margin:0 auto;">Offline</span> #{domain.url}<br>
   div#particles-js
 include ./particles.pug
       

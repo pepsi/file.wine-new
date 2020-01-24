@@ -10,7 +10,6 @@ function makeid() {
   var result = '';
   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   var charactersLength = characters.length;
-
   for (var i = 0; i < 5; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
@@ -20,7 +19,6 @@ function makeid() {
   }
   return result;
 }
-
 app.use(fileUpload({
   safeFileNames: false,
   preserveExtension: true,
@@ -28,7 +26,6 @@ app.use(fileUpload({
     fileSize: config.fileSizeLimit
   }
 }));
-
 app.set('view engine', 'pug')
 app.use('/static', express.static(path.join(__dirname + '/public')));
 app.get('/sharex', (req, res) => {
