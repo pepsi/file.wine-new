@@ -1,0 +1,15 @@
+html
+  head
+    link(rel='stylesheet', href='/static/css/styles.css')
+    script(src='/static/js/particles.min.js')
+    title Guilds
+    
+  body(onload="particles")
+  include ./hud.pug
+  a(href='/setup') Setup Guide
+    h2.config= config
+    
+  div#particles-js
+    
+include ./particles.pug
+      

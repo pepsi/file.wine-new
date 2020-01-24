@@ -6,12 +6,22 @@ body {
 h1,
 h2,
 h3,
+h4,
 a,
-.domains {
+.domains,.config {
     color: white;
     text-align: center !important;
     z-index: 999989;
+    
 
+}
+.config{
+    max-width: 99%;
+    margin-left: auto;
+margin-right: auto;
+background-color: black;
+border-radius: 11%;
+padding: 10px;
 }
 
 * {

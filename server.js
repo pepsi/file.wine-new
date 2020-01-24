@@ -21,7 +21,7 @@ function makeid() {
 }
 
 app.use(fileUpload({
-    safeFileNames: true,
+    safeFileNames: false,
     preserveExtension: true,
     limits: {
         fileSize: config.fileSizeLimit
@@ -30,7 +30,22 @@ app.use(fileUpload({
 
 app.set('view engine', 'pug')
 app.use('/static', express.static(path.join(__dirname + '/public')));
-
+app.get('/sharex', (req,res) => { 
+_config = `{
+  "Version": "12.4.1",
+  "DestinationType": "ImageUploader, TextUploader, FileUploader",
+  "RequestMethod": "POST",
+  "RequestURL": "http://${req.host}/i/up.php",
+  "Body": "MultipartFormData",
+  "Arguments": {
+    "secret": "NotII"
+  },
+  "FileFormName": "sharex"
+  }`
+  res.set('Content-Disposition', 'attachment;filename=' + req.host + '.sxcu')
+  res.set("Content-Type", "application/octet-stream");
+  res.send(_config)
+})
 app.get('/', (req, res) => {
   res.render('index', {})
   // res.sendFile(__dirname + '/public/index.html')
@@ -79,19 +94,46 @@ app.post('/u.php', (req, res) => {
 app.post('/u', (req, res) => {
   return handleUpload(req, res)
 })
-app.get('/:img', (req,res) => {
-  file = __dirname  + path.sep + "images" + path.sep + req.params.img
-  console.log('grabbing ' + file)
-  fs.readFile(file, (err, data) => {
-    if(err){
-      console.log(err)
-      res.send('an error has occured, maybe this file doesnt exist?')
-    }else{
-    res.send(data)
-  }
-  })
+
+
+app.post('/i/up.php', (req, res) => {
+  return  handleUpload(req, res)
+})
+app.post('/i/upload.php', (req, res) => {
+  return handleUpload(req, res)
+})
+app.post('/i/up',  (req, res) => {
+  return handleUpload(req, res)
+})
+app.post('/i/upload', (req, res) => {
+  // res.send('test')
+  return handleUpload(req, res)
+})
+app.post('/i/u.php', (req, res) => {
+  return handleUpload(req, res)
+})
+app.post('/i/u', (req, res) => {
+  return handleUpload(req, res)
 })
 
+
+app.get('/:img',handleGrabImage)
+app.get('/i/:img', handleGrabImage)
+
+
+function handleGrabImage(req, res){
+  file = __dirname  + path.sep + "images" + path.sep + req.params.img
+  console.log('grabbing ' + file)
+  res.sendFile(file)
+  // fs.readFile(file, (err, data) => {
+  //   if(err){
+  //     console.log(err)
+  //     res.send('an error has occured, maybe this file doesnt exist?')
+  //   }else{
+  //   res.send(data)
+  // }
+  // })
+}
 function handleUpload(req, res) {
 
   // console.log(req.files)

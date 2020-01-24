@@ -2,24 +2,15 @@ html
   head
     link(rel='stylesheet', href='/static/css/styles.css')
     script(src='/static/js/particles.min.js')
-    title Guilds
-    
   body(onload="particles")
-    
-        
-    h1 file.wine
-    h2 the best free file uploader
-    h2 Heres a list of available domains you can upload to
+    include ./hud.pug
     .domains
       each domain in cache.domains
         if domain.working
           a#domain(href='https://' + domain.url) <span style="font-size:15px;  background: green;margin: 0 auto;">Online</span> #{domain.url}<br>
         else
           a#domain(href='https://' +  domain.url) <span style="font-size:15px;  background: red;margin: 0 auto;">Offline</span> #{domain.url}<br>
-    p#hud
-      a(href='/') Home <br> 
-      a(href='/login') sharex config
-  div#particles-js
     
+  div#particles-js
 include ./particles.pug
       
