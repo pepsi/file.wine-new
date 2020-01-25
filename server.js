@@ -62,8 +62,6 @@ app.get('/api/v1/status', (req, res) => {
     res.send(c)
   })
 })
-app.get('/:img', handleGrabImage)
-app.get('/i/:img', handleGrabImage)
 
 app.post('/up.php', (req, res) => {
   return handleUpload(req, res)
@@ -101,12 +99,20 @@ app.post('/i/u.php', (req, res) => {
 app.post('/i/u', (req, res) => {
   return handleUpload(req, res)
 })
+app.get('/:img', handleGrabImage)
+app.get('/i/:img', handleGrabImage)
 
 function handleGrabImage(req, res) {
   file = __dirname + path.sep + "images" + path.sep + req.params.img
+  // console.log(file)
   fs.exists(file, (exists) => {
+    console.log(file, exists)
     if (exists) {
       res.sendFile(file)
+    }else{
+      res.render('404', {
+        reason: "Image not found"
+      })
     }
   })
 }
